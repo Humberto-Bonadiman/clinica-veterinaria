@@ -6,6 +6,10 @@ public class AnimalDto {
 
   private Long guardianId;
 
+  private String species;
+
+  private String race;
+
   private String birthDate;
 
   private String guardianName;
@@ -40,5 +44,21 @@ public class AnimalDto {
 
   public void setBirthDate(String birthDate) {
     this.birthDate = birthDate;
+  }
+
+  public String getSpecies() {
+    return species;
+  }
+
+  public void setSpecies(String species) {
+    this.species = species;
+  }
+
+  public String getRace() {
+    return race;
+  }
+
+  public void setRace(String race) {
+    this.race = race;
   }
 }

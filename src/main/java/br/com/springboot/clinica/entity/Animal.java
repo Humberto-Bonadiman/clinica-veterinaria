@@ -24,6 +24,12 @@ public class Animal {
   @Column
   private String name;
 
+  @Column
+  private String species;
+
+  @Column
+  private String race;
+
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "guardian_id")
   private Guardian guardian;
@@ -58,6 +64,22 @@ public class Animal {
 
   public void setGuardian(Guardian guardian) {
     this.guardian = guardian;
+  }
+
+  public String getSpecies() {
+    return species;
+  }
+
+  public void setSpecies(String species) {
+    this.species = species;
+  }
+
+  public String getRace() {
+    return race;
+  }
+
+  public void setRace(String race) {
+    this.race = race;
   }
 
   public String getBirthDate() {
