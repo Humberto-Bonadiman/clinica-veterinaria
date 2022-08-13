@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 @Service
-public class GuardianService  implements ServiceInterface<GuardianDto, Guardian>{
+public class GuardianService implements ServiceInterface<GuardianDto, Guardian>{
 
   @Autowired
   GuardianRepository repository;

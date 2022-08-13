@@ -58,7 +58,7 @@ public class Guardian {
     return animals;
   }
 
-  public void setAnimals(Animal animal) {
+  public void addAnimals(Animal animal) {
     animal.setGuardian(this);
     this.animals.add(animal);
   }
