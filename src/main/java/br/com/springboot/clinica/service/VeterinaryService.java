@@ -35,10 +35,10 @@ public class VeterinaryService implements ServiceInterface<VeterinaryDto, Veteri
   @Override
   public Veterinary findById(Long id) {
     try {
-        return repository.findById(id).get();
-      } catch (Exception e) {
-        throw new VetNotFoundException(id.toString());
-      }
+      return repository.findById(id).get();
+    } catch (Exception e) {
+      throw new VetNotFoundException(id.toString());
+    }
   }
 
   @Override
@@ -69,7 +69,7 @@ public class VeterinaryService implements ServiceInterface<VeterinaryDto, Veteri
       Veterinary veterinary = repository.findById(id).get();
       return veterinary.getAttendance();
     } catch (Exception e) {
-        throw new VetNotFoundException(id.toString());
-      }
+      throw new VetNotFoundException(id.toString());
+    }
   }
 }
