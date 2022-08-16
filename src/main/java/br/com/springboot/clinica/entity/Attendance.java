@@ -3,6 +3,7 @@ package br.com.springboot.clinica.entity;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,8 @@ public class Attendance {
   @JoinColumn(name = "animal_id")
   private Animal animal;
 
-  @Column
+  @Column(name = "reason_attendance")
+  @ElementCollection(targetClass=String.class)
   private List<String> reasonAttendance;
 
   public Long getId() {

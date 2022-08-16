@@ -27,7 +27,7 @@ public class GuardianController implements ControllerInterface<GuardianDto, Guar
   GuardianService service;
 
   @Override
-@PostMapping
+  @PostMapping
   public ResponseEntity<Guardian> create(@RequestBody GuardianDto object) {
     return ResponseEntity.status(HttpStatus.CREATED).body(service.create(object));
   }
@@ -38,26 +38,26 @@ public class GuardianController implements ControllerInterface<GuardianDto, Guar
   }
 
   @Override
-@GetMapping
+  @GetMapping
   public List<Guardian> findAll() {
     return service.findAll();
   }
 
   @Override
-@GetMapping("/{id}")
+  @GetMapping("/{id}")
   public Guardian findById(@PathVariable Long id) {
     return service.findById(id);
   }
 
-  @Override
-@PatchMapping("/{id}")
-  public ResponseEntity<Object> update(@PathVariable Long id, GuardianDto object) {
+
+  @PatchMapping("/{id}")
+  public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody GuardianDto object) {
     service.update(id, object);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 
   @Override
-@DeleteMapping("/{id}")
+  @DeleteMapping("/{id}")
   public ResponseEntity<Object> delete(@PathVariable Long id) {
     service.delete(id);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
