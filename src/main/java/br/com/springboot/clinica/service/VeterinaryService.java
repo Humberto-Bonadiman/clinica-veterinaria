@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 @Service
-public class VeterinaryService implements ServiceInterface<VeterinaryDto, Veterinary>{
+public class VeterinaryService implements ServiceInterface<VeterinaryDto, Veterinary> {
 
   @Autowired
   VeterinaryRepository repository;
@@ -61,7 +61,7 @@ public class VeterinaryService implements ServiceInterface<VeterinaryDto, Veteri
   }
 
   /**
-   * get attendance
+   * get attendance.
    */
   public List<Attendance> getAttendance(Long id) {
     try {

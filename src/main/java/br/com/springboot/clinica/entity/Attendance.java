@@ -28,7 +28,7 @@ public class Attendance {
   private Animal animal;
 
   @Column(name = "reason_attendance")
-  @ElementCollection(targetClass=String.class)
+  @ElementCollection(targetClass = String.class)
   private List<String> reasonAttendance;
 
   public Long getId() {

@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionController {
 
+  /**
+   * handle exception.
+   */
   @ExceptionHandler({
       AnimalNotFoundException.class,
       AttendanceNotFoundException.class,
@@ -21,6 +24,9 @@ public class GlobalExceptionController {
         .body(exception.getMessage());
   }
 
+  /**
+   * handle Runtime Eception.
+   */
   @ExceptionHandler(RuntimeException.class)
   public ResponseEntity<String> handleRuntimeException(RuntimeException exception) {
     return ResponseEntity
@@ -28,6 +34,9 @@ public class GlobalExceptionController {
         .body(exception.getMessage());
   }
 
+  /**
+   * handle throwable.
+   */
   @ExceptionHandler(Throwable.class)
   public ResponseEntity<String> handleThrowable(Throwable exception) {
     return ResponseEntity

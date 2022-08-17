@@ -1,10 +1,5 @@
 package br.com.springboot.clinica.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import br.com.springboot.clinica.dto.AttendanceDto;
 import br.com.springboot.clinica.entity.Animal;
 import br.com.springboot.clinica.entity.Attendance;
@@ -14,9 +9,12 @@ import br.com.springboot.clinica.exception.AttendanceNotFoundException;
 import br.com.springboot.clinica.repository.AnimalRepository;
 import br.com.springboot.clinica.repository.AttendanceRepository;
 import br.com.springboot.clinica.repository.VeterinaryRepository;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
-public class AttendanceService implements ServiceInterface<AttendanceDto, Attendance>{
+public class AttendanceService implements ServiceInterface<AttendanceDto, Attendance> {
 
   @Autowired
   AttendanceRepository repository;

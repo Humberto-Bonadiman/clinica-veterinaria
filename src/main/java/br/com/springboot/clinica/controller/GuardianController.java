@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 @RequestMapping("/guardian")
-public class GuardianController implements ControllerInterface<GuardianDto, Guardian>{
+public class GuardianController implements ControllerInterface<GuardianDto, Guardian> {
 
   @Autowired
   GuardianService service;

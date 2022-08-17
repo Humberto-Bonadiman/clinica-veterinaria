@@ -48,11 +48,6 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>junit-jupiter</artifactId>
 			<scope>test</scope>
@@ -61,6 +56,12 @@
 			<groupId>org.testcontainers</groupId>
 			<artifactId>mysql</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/de.mklinger.micro/mediatype -->
+		<dependency>
+		    <groupId>de.mklinger.micro</groupId>
+		    <artifactId>mediatype</artifactId>
+		    <version>1.0</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -80,6 +81,32 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludeDevtools>false</excludeDevtools>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<configLocation>google_checks.xml</configLocation>
+					<failsOnError>true</failsOnError>
+					<consoleOutput>true</consoleOutput>
+					<violationSeverity>warning</violationSeverity>
+				</configuration>
+				<executions>
+					<execution>
+						<id>checkstyle</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<failOnViolation>true</failOnViolation>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

@@ -19,7 +19,7 @@ public class AnimalDto {
   }
 
   public void setGuardianName(String guardianName) {
-   this.guardianName = guardianName;
+    this.guardianName = guardianName;
   }
 
   public Long getGuardianId() {

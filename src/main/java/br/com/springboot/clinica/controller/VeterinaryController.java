@@ -1,7 +1,10 @@
 package br.com.springboot.clinica.controller;
 
+import br.com.springboot.clinica.dto.VeterinaryDto;
+import br.com.springboot.clinica.entity.Attendance;
+import br.com.springboot.clinica.entity.Veterinary;
+import br.com.springboot.clinica.service.VeterinaryService;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,15 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.springboot.clinica.dto.VeterinaryDto;
-import br.com.springboot.clinica.entity.Attendance;
-import br.com.springboot.clinica.entity.Veterinary;
-import br.com.springboot.clinica.service.VeterinaryService;
-
 @CrossOrigin
 @RestController
 @RequestMapping("/veterinary")
-public class VeterinaryController implements ControllerInterface<VeterinaryDto, Veterinary>{
+public class VeterinaryController implements ControllerInterface<VeterinaryDto, Veterinary> {
 
   @Autowired
   VeterinaryService service;

@@ -1,11 +1,5 @@
 package br.com.springboot.clinica.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
-
 import br.com.springboot.clinica.dto.AnimalDto;
 import br.com.springboot.clinica.entity.Animal;
 import br.com.springboot.clinica.entity.Attendance;
@@ -14,6 +8,10 @@ import br.com.springboot.clinica.exception.AnimalNotFoundException;
 import br.com.springboot.clinica.exception.GuardianNotFoundException;
 import br.com.springboot.clinica.repository.AnimalRepository;
 import br.com.springboot.clinica.repository.GuardianRepository;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 @Service
 public class AnimalService implements ServiceInterface<AnimalDto, Animal> {
@@ -28,12 +26,12 @@ public class AnimalService implements ServiceInterface<AnimalDto, Animal> {
   public Animal create(AnimalDto object) {
     Assert.notNull(object.getName(), "Name cannot be blank");
     try {
-      Guardian guardian = guardianRepository.findById(object.getGuardianId()).get();
       Animal newAnimal = new Animal();
       newAnimal.setName(object.getName());
       newAnimal.setSpecies(object.getSpecies());
       newAnimal.setRace(object.getRace());
       newAnimal.setBirthDate(object.getBirthDate());
+      Guardian guardian = guardianRepository.findById(object.getGuardianId()).get();
       guardian.addAnimals(newAnimal);
       Guardian saved = guardianRepository.save(guardian);
       return saved.getAnimals().get(saved.getAnimals().size() - 1);
@@ -79,7 +77,7 @@ public class AnimalService implements ServiceInterface<AnimalDto, Animal> {
   }
 
   /**
-   * get attendance
+   * get attendance.
    */
   public List<Attendance> getAttendance(Long id) {
     try {
