@@ -46,7 +46,6 @@ public class VeterinaryService implements ServiceInterface<VeterinaryDto, Veteri
     try {
       Veterinary veterinary = repository.findById(id).get();
       veterinary.setName(object.getName());
-      repository.save(veterinary);
     } catch (Exception e) {
       throw new VetNotFoundException(id.toString());
     }

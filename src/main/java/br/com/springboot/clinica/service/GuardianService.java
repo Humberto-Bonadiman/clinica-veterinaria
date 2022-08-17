@@ -45,7 +45,6 @@ public class GuardianService implements ServiceInterface<GuardianDto, Guardian>{
       Guardian guardian = repository.findById(id).get();
       guardian.setName(object.getName());
       guardian.setAddress(object.getAddress());
-      repository.save(guardian);
     } catch (Exception e) {
       throw new GuardianNotFoundException(id.toString());
     }

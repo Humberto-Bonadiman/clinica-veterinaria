@@ -49,6 +49,7 @@ public class GuardianController implements ControllerInterface<GuardianDto, Guar
     return service.findById(id);
   }
 
+  @Override
   @PatchMapping("/{id}")
   public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody GuardianDto object) {
     service.update(id, object);

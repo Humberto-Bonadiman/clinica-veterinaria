@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.springboot.clinica.dto.AnimalDto;
 import br.com.springboot.clinica.entity.Animal;
+import br.com.springboot.clinica.entity.Attendance;
 import br.com.springboot.clinica.service.AnimalService;
 
 @CrossOrigin
@@ -43,6 +44,11 @@ public class AnimalController implements ControllerInterface<AnimalDto, Animal>{
   @GetMapping
   public List<Animal> findAll() {
     return service.findAll();
+  }
+
+  @GetMapping("/{id}/attendance")
+  public List<Attendance> getAttendances(@PathVariable Long id) {
+    return service.getAttendance(id);
   }
 
   @Override

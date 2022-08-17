@@ -1,18 +1,19 @@
 package br.com.springboot.clinica.service;
 
-import br.com.springboot.clinica.dto.AnimalDto;
-import br.com.springboot.clinica.entity.Animal;
-import br.com.springboot.clinica.entity.Guardian;
-import br.com.springboot.clinica.exception.AnimalNotFoundException;
-import br.com.springboot.clinica.exception.GuardianNotFoundException;
-import br.com.springboot.clinica.repository.AnimalRepository;
-import br.com.springboot.clinica.repository.GuardianRepository;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+
+import br.com.springboot.clinica.dto.AnimalDto;
+import br.com.springboot.clinica.entity.Animal;
+import br.com.springboot.clinica.entity.Attendance;
+import br.com.springboot.clinica.entity.Guardian;
+import br.com.springboot.clinica.exception.AnimalNotFoundException;
+import br.com.springboot.clinica.exception.GuardianNotFoundException;
+import br.com.springboot.clinica.repository.AnimalRepository;
+import br.com.springboot.clinica.repository.GuardianRepository;
 
 @Service
 public class AnimalService implements ServiceInterface<AnimalDto, Animal> {
@@ -63,7 +64,6 @@ public class AnimalService implements ServiceInterface<AnimalDto, Animal> {
       updateAnimal.setSpecies(object.getSpecies());
       updateAnimal.setRace(object.getRace());
       updateAnimal.setBirthDate(object.getBirthDate());
-      repository.save(updateAnimal);
     } catch (Exception e) {
       throw new AnimalNotFoundException(id.toString());
     }
@@ -77,4 +77,18 @@ public class AnimalService implements ServiceInterface<AnimalDto, Animal> {
       throw new AnimalNotFoundException(id.toString());
     }
   }
+
+  /**
+   * get attendance
+   */
+  public List<Attendance> getAttendance(Long id) {
+    try {
+      Animal animal =  repository.findById(id).get();
+      return animal.getAttendance();
+    } catch (Exception e) {
+      throw new AnimalNotFoundException(id.toString());
+    }
+  }
+
+
 }

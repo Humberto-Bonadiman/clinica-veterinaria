@@ -63,7 +63,6 @@ public class AttendanceService implements ServiceInterface<AttendanceDto, Attend
     try {
       Attendance updateAttendance = repository.findById(id).get();
       updateAttendance.setReasonAttendance(object.getReasonAttendance());
-      repository.save(updateAttendance);
     } catch (Exception e) {
       throw new AttendanceNotFoundException(id.toString());
     }
