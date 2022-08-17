@@ -9,6 +9,6 @@ public class VetNotFoundException extends RuntimeException {
    * @param message the message
    */
   public VetNotFoundException(String message) {
-    super("No veterinarian found with id:" + message);
+    super("No veterinarian found with id: " + message);
   }
 }
