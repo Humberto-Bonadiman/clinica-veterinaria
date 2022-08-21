@@ -12,16 +12,6 @@ public class AnimalDto {
 
   private String birthDate;
 
-  private String guardianName;
-
-  public String getGuardianName() {
-    return guardianName;
-  }
-
-  public void setGuardianName(String guardianName) {
-    this.guardianName = guardianName;
-  }
-
   public Long getGuardianId() {
     return guardianId;
   }
