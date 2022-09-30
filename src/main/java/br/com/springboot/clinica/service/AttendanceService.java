@@ -3,7 +3,6 @@ package br.com.springboot.clinica.service;
 import br.com.springboot.clinica.dto.AttendanceDto;
 import br.com.springboot.clinica.entity.Animal;
 import br.com.springboot.clinica.entity.Attendance;
-import br.com.springboot.clinica.entity.Guardian;
 import br.com.springboot.clinica.entity.Veterinary;
 import br.com.springboot.clinica.exception.AnimalNotFoundException;
 import br.com.springboot.clinica.exception.AttendanceNotFoundException;
