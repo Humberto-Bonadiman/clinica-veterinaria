@@ -1,4 +1,4 @@
-# Boas vindas ao repositório do projeto Clinica Veterinária Spring
+# Boas vindas ao repositório do projeto Clínica Veterinária Spring
 
 ---
 
