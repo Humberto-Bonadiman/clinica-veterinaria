@@ -3,6 +3,7 @@ package br.com.springboot.clinica.service;
 import br.com.springboot.clinica.dto.AttendanceDto;
 import br.com.springboot.clinica.entity.Animal;
 import br.com.springboot.clinica.entity.Attendance;
+import br.com.springboot.clinica.entity.Guardian;
 import br.com.springboot.clinica.entity.Veterinary;
 import br.com.springboot.clinica.exception.AnimalNotFoundException;
 import br.com.springboot.clinica.exception.AttendanceNotFoundException;
@@ -14,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AttendanceService implements ServiceInterface<AttendanceDto, Attendance> {
+public class AttendanceService {
 
   @Autowired
   AttendanceRepository repository;
@@ -25,24 +26,26 @@ public class AttendanceService implements ServiceInterface<AttendanceDto, Attend
   @Autowired
   VeterinaryRepository veterinaryRepository;
 
-  @Override
-  public Attendance create(AttendanceDto object) {
+  /**
+   * create attendance.
+   */
+  public synchronized Attendance create(AttendanceDto object) {
     try {
-      Animal animal = animalRepository.findById(object.getAnimalId()).get();
-      Veterinary veterinary = veterinaryRepository.findById(object.getVeterinaryId()).get();
       Attendance newAttendance = new Attendance();
       newAttendance.setReasonAttendance(object.getReasonAttendance());
+      Veterinary veterinary = veterinaryRepository.findById(object.getVeterinaryId()).get();
       veterinary.addAttendance(newAttendance);
+      Animal animal = animalRepository.findById(object.getAnimalId()).get();
       animal.addAttendance(newAttendance);
-      veterinaryRepository.save(veterinary);
-      Animal saved = animalRepository.save(animal);
-      return saved.getAttendance().get(saved.getAttendance().size() - 1);
+      return repository.save(newAttendance);
     } catch (Exception e) {
       throw new AnimalNotFoundException(object.getAnimalId().toString());
     }
   }
 
-  @Override
+  /**
+   * find attendance by id.
+   */
   public Attendance findById(Long id) {
     try {
       return repository.findById(id).get();
@@ -51,25 +54,17 @@ public class AttendanceService implements ServiceInterface<AttendanceDto, Attend
     }
   }
 
-  @Override
   public List<Attendance> findAll() {
     return repository.findAll();
   }
 
-  @Override
+  /**
+   * update Attendance.
+   */
   public void update(Long id, AttendanceDto object) {
     try {
       Attendance updateAttendance = repository.findById(id).get();
       updateAttendance.setReasonAttendance(object.getReasonAttendance());
-    } catch (Exception e) {
-      throw new AttendanceNotFoundException(id.toString());
-    }
-  }
-
-  @Override
-  public void delete(Long id) {
-    try {
-      repository.deleteById(id);
     } catch (Exception e) {
       throw new AttendanceNotFoundException(id.toString());
     }

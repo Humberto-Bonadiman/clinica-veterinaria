@@ -13,8 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "animal")
 public class Animal {
 
   @Id
@@ -38,9 +40,13 @@ public class Animal {
   private String birthDate;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true,
-      fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Attendance> attendance = new ArrayList<Attendance>();
+  
+  public Animal() {
+    super();
+    this.attendance = new ArrayList<Attendance>();
+  }
 
   public Long getId() {
     return id;
