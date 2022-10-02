@@ -28,7 +28,6 @@ services:
     image: mysql:8
     container_name: mysqldb
     restart: unless-stopped
-    env_file: ./.env
     volumes:
       - db:/var/lib/mysql
     networks:
