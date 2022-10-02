@@ -6,7 +6,7 @@ services:
     restart: on-failure
     env_file: ./.env
     ports:
-      - $APP_LOCAL_PORT:$APP_DOCKER_PORT
+      - 8081:8081
     environment:
       SPRING_APPLICATION_JSON: '{
         "spring.datasource.url"  : "jdbc:mysql://mysqldb:$DB_DOCKER_PORT/clinica_veterinaria_db?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false",
@@ -42,7 +42,7 @@ services:
       timeout: 10s
       retries: 5
     ports:
-      - $DB_LOCAL_PORT:$DB_DOCKER_PORT
+      - 3306:3306
 networks:
   clinica-veterinaria-net:
      driver: bridge
