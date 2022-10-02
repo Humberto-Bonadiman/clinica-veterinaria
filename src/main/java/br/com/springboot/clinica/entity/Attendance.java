@@ -28,7 +28,7 @@ public class Attendance {
   @JoinColumn(name = "animal_id")
   private Animal animal;
 
-  @Column(name = "reason_attendance", nullable = false)
+  @Column(name = "reason_attendance")
   @ElementCollection(targetClass = String.class)
   private List<String> reasonAttendance;
 

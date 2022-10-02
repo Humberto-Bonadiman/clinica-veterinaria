@@ -115,13 +115,13 @@ public class AttendanceApplicationTests {
   @Order(4)
   @DisplayName("4 - Should return a list of all registered attendances")
   void listAttendances() throws Exception {
-    final Guardian guardian = new Guardian();
-    guardian.setName("Leonardo Gomes");
-    guardian.setAddress("Rua Sorocaba, bairro Aparecida");
+    Guardian guardian = new Guardian();
+    guardian.setName("Lucas Costa e Silva");
+    guardian.setAddress("Avenida Brigadeiro Faria Lima, 1.440 - Jardim Paulistano");
     guardianRepository.save(guardian);
 
     Veterinary veterinary = new Veterinary();
-    veterinary.setName("Lucas Costa e Silva");
+    veterinary.setName("Guilherme Azevedo");
     veterinaryRepository.save(veterinary);
 
     Animal animal = new Animal();
@@ -133,22 +133,25 @@ public class AttendanceApplicationTests {
     animalRepository.save(animal);
 
     Attendance attendance1 = new Attendance();
+    List<String> symptoms1 = Arrays.asList("cough", "tiredness");
     attendance1.setVeterinary(veterinary);
     attendance1.setAnimal(animal);
-    List<String> symptoms1 = Arrays.asList("cough", "tiredness");
     attendance1.setReasonAttendance(symptoms1);
     attendanceRepository.save(attendance1);
 
     Attendance attendance2 = new Attendance();
+    List<String> symptoms2 = Arrays.asList("diarrhea");
     attendance2.setVeterinary(veterinary);
     attendance2.setAnimal(animal);
-    List<String> symptoms2 = Arrays.asList("diarrhea");
     attendance2.setReasonAttendance(symptoms2);
     attendanceRepository.save(attendance2);
 
     mockMvc.perform(get("/attendance"))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$[0].reasonAttendance").value(attendance1.getReasonAttendance()))
-        .andExpect(jsonPath("$[1].reasonAttendance").value(attendance2.getReasonAttendance()));
+        .andExpect(jsonPath("$[0].id").value(attendance1.getId()))
+        .andExpect(jsonPath("$[0].reasonAttendance[0]").value(attendance1.getReasonAttendance().get(0)))
+        .andExpect(jsonPath("$[0].reasonAttendance[1]").value(attendance1.getReasonAttendance().get(1)))
+        .andExpect(jsonPath("$[1].id").value(attendance2.getId()))
+        .andExpect(jsonPath("$[1].reasonAttendance[0]").value(attendance2.getReasonAttendance().get(0)));
   }
 }

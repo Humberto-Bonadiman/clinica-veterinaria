@@ -109,7 +109,6 @@ public class AnimalApplicationTests {
     body2.setRace("SRD");
     body2.setBirthDate("20/05/2020");
     animalRepository.save(body2);
-    System.out.println(jsonPath("$[0].guardian"));
     mockMvc.perform(get("/animal"))
       .andExpect(status().isOk())
       .andExpect(jsonPath("$[0].name").value(body1.getName()))
