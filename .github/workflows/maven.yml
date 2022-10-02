@@ -32,3 +32,6 @@ jobs:
       - name: Docker Compose Build
         working-directory: .
         run: docker-compose build
+
+      - name: Build and push Docker images
+        run: docker tag ${{ secrets.DOCKER_USERNAME }}/clinica:0.0.1-SNAPSHOT ${{ secrets.DOCKER_USERNAME }}/clinica:${{github.run_id}}
