@@ -1,7 +1,9 @@
 version: "3.8"
 services:
   application:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: application
     restart: on-failure
     ports:
