@@ -35,5 +35,7 @@ jobs:
 
       - name: Build and push Docker images
         run: |
+          docker tag ${{ secrets.DOCKER_USERNAME }}/clinica:0.0.1-SNAPSHOT ${{ secrets.DOCKER_USERNAME }}/clinica:${{github.run_id}}
           docker tag ${{ secrets.DOCKER_USERNAME }}/clinica:latest ${{ secrets.DOCKER_USERNAME }}/clinica:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/clinica:${{github.run_id}}
           docker push ${{ secrets.DOCKER_USERNAME }}/clinica:latest
