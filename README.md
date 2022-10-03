@@ -1,3 +1,5 @@
+[![Continuos Integration with GitHub](https://github.com/Humberto-Bonadiman/clinica-veterinaria-spring/actions/workflows/maven.yml/badge.svg)](https://github.com/Humberto-Bonadiman/clinica-veterinaria-spring/actions/workflows/maven.yml)
+
 # Boas vindas ao repositório do projeto Clínica Veterinária Spring
 
 ---
