@@ -32,19 +32,6 @@ git clone git@github.com:humberto-bonadiman/clinica-veterinaria.git
   mvn package
 ```
 
-## Conexão com o Banco
-
-Para conectar o banco de dados é essencial criar um arquivo .env com os dados contidos no arquivo .env.example e alterar as variáveis de ambiente abaixo:
-
-```javascript
-DB_USER=user
-DB_ROOT_PASSWORD=senha
-DB_LOCAL_PORT=3308
-DB_DOCKER_PORT=3308
-APP_LOCAL_PORT=8080
-APP_DOCKER_PORT=8080
-```
-
 ---
 
 ## Comandos para utilizar o Docker
