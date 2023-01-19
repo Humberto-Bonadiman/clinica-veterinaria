@@ -26,11 +26,12 @@ public class AnimalService implements ServiceInterface<AnimalDto, Animal> {
   public Animal create(AnimalDto object) {
     Assert.notNull(object.getName(), "Name cannot be blank");
     try {
-      Animal newAnimal = new Animal();
-      newAnimal.setName(object.getName());
-      newAnimal.setSpecies(object.getSpecies());
-      newAnimal.setRace(object.getRace());
-      newAnimal.setBirthDate(object.getBirthDate());
+      Animal newAnimal = new Animal(
+          object.getName(),
+          object.getSpecies(),
+          object.getRace(),
+          object.getBirthDate()
+      );
       Guardian guardian = guardianRepository.findById(object.getGuardianId()).get();
       guardian.addAnimals(newAnimal);
       Guardian saved = guardianRepository.save(guardian);
@@ -67,7 +68,6 @@ public class AnimalService implements ServiceInterface<AnimalDto, Animal> {
     }
   }
 
-  @Override
   public void delete(Long id) {
     try {
       repository.deleteById(id);

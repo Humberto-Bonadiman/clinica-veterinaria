@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 services:
   application:
     image: humbertobonadiman/clinica-veterinaria-spring_application
@@ -11,7 +11,7 @@ services:
       - 8081:8081
     environment:
       SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/clinica_veterinaria_db?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false",
+        "spring.datasource.url"  : "jdbc:mysql://mysqldb:3308/clinica_veterinaria_db?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false",
         "spring.datasource.username" : "root",
         "spring.datasource.password" : "1234",
         "spring.datasource.driver-class-name": "com.mysql.cj.jdbc.Driver",
@@ -30,6 +30,7 @@ services:
   mysqldb:
     image: mysql:8
     container_name: mysqldb
+    command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
     volumes:
       - db:/var/lib/mysql
@@ -38,12 +39,17 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=1234
       - MYSQL_DATABASE=clinica_db
+      - MYSQL_PASSWORD=1234
+      - MYSQL_ROOT_HOST='%'
+      - MYSQL_TCP_PORT=3308
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 10s
       retries: 5
     ports:
-      - 3306:3306
+      - 3308:3308
+    expose:
+      - 3308
 networks:
   clinica-veterinaria-net:
      driver: bridge

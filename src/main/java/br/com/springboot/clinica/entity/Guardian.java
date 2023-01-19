@@ -31,6 +31,13 @@ public class Guardian {
   @OneToMany(mappedBy = "guardian", cascade = CascadeType.ALL, orphanRemoval = true,
       fetch = FetchType.LAZY)
   private List<Animal> animals = new ArrayList<Animal>();
+  
+  public Guardian() {}
+
+  public Guardian(String name, String address) {
+    this.name = name;
+    this.address = address;
+  }
 
   public Long getId() {
     return id;

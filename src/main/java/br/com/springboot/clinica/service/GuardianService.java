@@ -19,9 +19,7 @@ public class GuardianService implements ServiceInterface<GuardianDto, Guardian> 
   @Override
   public Guardian create(GuardianDto object) {
     Assert.notNull(object.getName(), "Name cannot be blank");
-    Guardian newGuardian = new Guardian();
-    newGuardian.setName(object.getName());
-    newGuardian.setAddress(object.getAddress());
+    Guardian newGuardian = new Guardian(object.getName(), object.getAddress());
     return repository.save(newGuardian);
   }
 
@@ -34,7 +32,7 @@ public class GuardianService implements ServiceInterface<GuardianDto, Guardian> 
   public Guardian findById(Long id) {
     try {
       return repository.findById(id).get();
-    } catch (Exception e) {
+    } catch (Exception exception) {
       throw new GuardianNotFoundException(id.toString());
     }
   }
@@ -50,7 +48,6 @@ public class GuardianService implements ServiceInterface<GuardianDto, Guardian> 
     }
   }
 
-  @Override
   public void delete(Long id) {
     try {
       repository.deleteById(id);

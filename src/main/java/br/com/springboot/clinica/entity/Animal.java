@@ -47,6 +47,14 @@ public class Animal {
     super();
     this.attendance = new ArrayList<Attendance>();
   }
+  
+  public Animal(String name, String species, String race, String birthDate) {
+    this.name = name;
+    this.species = species;
+    this.race = race;
+    this.birthDate = birthDate;
+    this.attendance = new ArrayList<Attendance>();
+  }
 
   public Long getId() {
     return id;

@@ -31,6 +31,11 @@ public class Veterinary {
     super();
     this.attendance = new ArrayList<Attendance>();
   }
+  
+  public Veterinary(String name) {
+    this.name = name;
+    this.attendance = new ArrayList<Attendance>();
+  }
 
   public Long getId() {
     return id;

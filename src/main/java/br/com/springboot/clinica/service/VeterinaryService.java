@@ -22,8 +22,7 @@ public class VeterinaryService implements ServiceInterface<VeterinaryDto, Veteri
   @Override
   public Veterinary create(VeterinaryDto object) {
     Assert.notNull(object.getName(), "Name cannot be blank");
-    Veterinary newVeterinary = new Veterinary();
-    newVeterinary.setName(object.getName());
+    Veterinary newVeterinary = new Veterinary(object.getName());
     return repository.save(newVeterinary);
   }
 
@@ -51,7 +50,6 @@ public class VeterinaryService implements ServiceInterface<VeterinaryDto, Veteri
     }
   }
 
-  @Override
   public void delete(Long id) {
     try {
       repository.deleteById(id);

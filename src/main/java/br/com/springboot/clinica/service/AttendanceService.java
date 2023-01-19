@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AttendanceService {
+public class AttendanceService implements ServiceInterface<AttendanceDto, Attendance> {
 
   @Autowired
   AttendanceRepository repository;

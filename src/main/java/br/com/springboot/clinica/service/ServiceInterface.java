@@ -11,6 +11,4 @@ public interface ServiceInterface<T, K> {
   public List<K> findAll();
 
   public void update(Long id, T object);
-
-  public void delete(Long id);
 }
