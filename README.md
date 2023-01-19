@@ -18,13 +18,18 @@ Após cada um dos passos, haverá um exemplo do comando a ser digitado para faze
 
 1.Realize o clone do projeto no diretório de sua preferência:
 ```javascript
-git clone git@github.com:humberto-bonadiman/clinica-veterinaria-spring.git
+git clone git@github.com:humberto-bonadiman/clinica-veterinaria.git
 ```
 
 2. Acesse o diretório do projeto e depois utilize o comando **mvn install** para instalar todas as dependências necessárias:
 ```javascript
-  cd clinica-veterinaria-spring
+  cd clinica-veterinaria
   mvn install
+```
+
+3. Após empacote o código compilado com o comando **mvn package**:
+```javascript
+  mvn package
 ```
 
 ## Conexão com o Banco
@@ -34,8 +39,8 @@ Para conectar o banco de dados é essencial criar um arquivo .env com os dados c
 ```javascript
 DB_USER=user
 DB_ROOT_PASSWORD=senha
-DB_LOCAL_PORT=3306
-DB_DOCKER_PORT=3306
+DB_LOCAL_PORT=3308
+DB_DOCKER_PORT=3308
 APP_LOCAL_PORT=8080
 APP_DOCKER_PORT=8080
 ```
@@ -43,11 +48,6 @@ APP_DOCKER_PORT=8080
 ---
 
 ## Comandos para utilizar o Docker
-
-Caso o MySQL esteja ativo em sua máquina é necessário realizar o comando:
-```javascript
-sudo service mysql stop
-```
 
 Para criar e iniciar os contêineres:
 </br>
@@ -73,11 +73,6 @@ docker-compose down
 ---
 
 ## Utilizando o Spring-boot sem o Docker
-
-Primeiramente, ative o MySQL:
-```javascript
-sudo service mysql start
-```
 
 Após altere o arquivo application.properties que está localizado no seguinte caminho clinica-veterinaria/src/main/resources/application.properties. Nele você deve alterar a 3ª(username) e a 4ª(password) linha com o usuário e senha do seu MySQL:
 ```javascript
