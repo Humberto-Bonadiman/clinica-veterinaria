@@ -27,7 +27,9 @@ jobs:
 
       - name: Docker Compose Build
         working-directory: .
-        run: docker-compose build
+        run: |
+            mvn clean package
+            docker-compose build
 
       - name: Build and push Docker images
         run: |
