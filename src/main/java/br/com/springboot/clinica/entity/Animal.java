@@ -48,6 +48,9 @@ public class Animal {
     this.attendance = new ArrayList<Attendance>();
   }
   
+  /**
+   * constructor animal.
+   */
   public Animal(String name, String species, String race, String birthDate) {
     this.name = name;
     this.species = species;

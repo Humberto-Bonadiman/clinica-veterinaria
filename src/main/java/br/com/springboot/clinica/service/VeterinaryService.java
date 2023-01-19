@@ -50,6 +50,9 @@ public class VeterinaryService implements ServiceInterface<VeterinaryDto, Veteri
     }
   }
 
+  /**
+   * delete veterinary.
+   */
   public void delete(Long id) {
     try {
       repository.deleteById(id);

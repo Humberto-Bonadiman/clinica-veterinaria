@@ -68,6 +68,9 @@ public class AnimalService implements ServiceInterface<AnimalDto, Animal> {
     }
   }
 
+  /**
+   * delete animal.
+   */
   public void delete(Long id) {
     try {
       repository.deleteById(id);
